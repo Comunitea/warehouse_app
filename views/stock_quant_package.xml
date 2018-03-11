@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_quant_package_tree_wapp" model="ir.ui.view">
+            <field name="name">stock.quant.package.tree.wapp</field>
+            <field name="model">stock.quant.package</field>
+            <field name="inherit_id" ref="stock.view_quant_package_tree"/>
+            <field name="arch" type="xml">
+                <field name="display_name" position="after">
+                    <field name="product_id"/>
+                    <field name="lot_ids" />
+                    <field name="package_qty"/>
+                    <field name="multi"/>
+
+                </field>
+            </field>
+        </record>
+        <record id="view_quant_package_form_wapp" model="ir.ui.view">
+            <field name="name">stock.quant.package.form.wapp</field>
+            <field name="model">stock.quant.package</field>
+            <field name="inherit_id" ref="stock.view_quant_package_form"/>
+            <field name="arch" type="xml">
+                <field name="packaging_id" position="before">
+                    <field name="product_id"/>
+                    <field name="tracking"/>
+                    <field name="package_qty"/>
+                </field>
+                <field name="location_id" position="before">
+                    <field name="lot_ids" widget="many2many_tags"/>
+                    <field name="multi"/>
+
+                </field>
+                <xpath expr="//tree/field[@name='location_id']" position="before">
+                    <field name="lot_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
